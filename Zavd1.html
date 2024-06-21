@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Week </title>
+</head>
+<body>
+    <script>
+        class Week {
+            constructor(language) {
+                this.language = language
+            }
+            Week_day(a) {
+                let dayName;
+                if (this.language === "ua") {
+                    switch (a) {
+                        case 7:
+                            dayName = 'Неділя';
+                            break;
+                        case 1:
+                            dayName = 'Понеділок';
+                            break;
+                        case 2:
+                            dayName = 'Вівторок';
+                            break;
+                        case 3:
+                            dayName = 'Середа';
+                            break;
+                        case 4:
+                            dayName = 'Четвер';
+                            break;
+                        case 5:
+                            dayName = 'Пятниця';
+                            break;
+                        case 6:
+                            dayName = 'Субота';
+                            break;
+                        default:
+                            dayName = 'Невідомий день';
+                    }
+                    alert(dayName)
+                }
+                else if (this.language === "en") {
+                    switch (a) {
+                        case 7:
+                            dayName = 'Sunday';
+                            break;
+                        case 1:
+                            dayName = 'Monday';
+                            break;
+                        case 2:
+                            dayName = 'Tuesday';
+                            break;
+                        case 3:
+                            dayName = 'Wednesday';
+                            break;
+                        case 4:
+                            dayName = 'Thursday';
+                            break;
+                        case 5:
+                            dayName = 'Friday';
+                            break;
+                        case 6:
+                            dayName = 'Saturday';
+                            break;
+                        default:
+                            dayName = '????';
+                    }
+                    alert(dayName)
+                }
+
+            }
+
+        }
+        const ger = prompt("Оберіть мову", "en")
+        if (ger === "en") {
+            const der = new Week(ger)
+            const gr = prompt("Enter the day number of the week (from 1 to 7)?", "1")
+            der.Week_day(parseInt(gr))
+        }
+        else if (ger === "ua") {
+            const der = new Week(ger)
+            const gr = prompt("Введіть номер дня неділі від 1 до 7?", "1")
+            der.Week_day(parseInt(gr))
+        }
+    </script>
+</body>
+
+</html>

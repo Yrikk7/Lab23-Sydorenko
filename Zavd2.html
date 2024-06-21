@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>power transmission </title>
+</head>
+
+<body>
+    <h1>потужність</h1>
+    <input id="a1" type="text" value="15" />
+    <h1>кількість квартир</h1>
+    <input id="a2" type="text" value="15" />
+    <h1>період доби</h1>
+    <select id="a3">
+        <option value="ніч">ніч</option>
+        <option value="день">день</option>        
+      </select>
+    <h1>ціна</h1>
+    <input id="a4" type="text" value="15" />
+    <input type="button" value="start" onclick="Start()" />
+    <script>
+        class Power_transmission {
+            constructor(power, number_apartments, period_day, price) {
+                if (power > 5) {
+                    this.source = "power plant";
+                } else if (power < 5) {
+                    this.source = "solar panels";
+                }
+                this.power = power;
+                this.price = price;
+                this.number_apartments = number_apartments;
+                this.period_day = period_day;
+            }
+            Calculator() {
+                if (this.period_day == "ніч" && this.source == "solar panels") {
+                    alert("потужність - " + this.power + "мВат " + "  кількість квартир - " + this.number_apartments +
+                        "  період доби - " + this.period_day + "  ціна - " + this.price + "  джерело - " + this.source);
+                    alert("Затрати на електроенергію = " + 0 + "грн");
+                }
+                else if (this.period_day == "день") {
+                    let sd = (this.power/1000) * this.number_apartments * this.price
+                    alert("потужність - " + this.power + "мВат " + "  кількість квартир - " + this.number_apartments +
+                        "  період доби - " + this.period_day + "  ціна - " + this.price + "  джерело - " + this.source);
+                    alert("Затрати на електроенергію = " + sd + "грн");
+                }
+                else if (this.number_apartments < 0 || this.number_apartments > 400) {
+                    alert("Забагато квартир");
+                }
+                else if (this.power < 0 || this.power > 100) {
+                    alert("немає такого джерела енергії");
+                }
+                else if (this.period_day == "ніч" && this.source == "power plant") {
+                    this.power = 1;
+                    let sd = (this.power/1000) * this.number_apartments * this.price
+                    alert("потужність - " + this.power + "мВат " + "  кількість квартир - " + this.number_apartments +
+                    "  період доби - " + this.period_day + "  ціна - " + this.price + "  джерело - " + this.source);
+                    alert("Затрати на електроенергію = " + sd + "грн");
+                }
+
+            }
+        }
+        function Start() {
+            const a1 = parseInt(document.getElementById("a1").value);
+            const a2 = parseInt(document.getElementById("a2").value);
+            const a3 = document.getElementById("a3").value;
+            const a4 = parseInt(document.getElementById("a4").value);
+            const der = new Power_transmission(a1, a2, a3, a4);
+            der.Calculator();
+        }
+
+    </script>
+</body>
+
+</html>
